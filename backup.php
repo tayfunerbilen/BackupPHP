@@ -79,7 +79,7 @@ class Backup
                 $columnsData = [];
                 foreach ($rows as $row) {
                     $row = array_map(function ($item) {
-                        return $this->db->quote($item);
+                         return $this->db->quote($item === null ? '' : $item); // null değerleri boş string ile değiştir php 8 sonrası için 
                     }, $row);
                     $columnsData[] = '(' . implode(',', $row) . ')';
                 }
